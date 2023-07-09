@@ -9,16 +9,16 @@ screen_x = 690
 screen_y = 540
 dimensions = 30
 background = (173, 216, 230)
-green = pygame.image.load(("Modelsandmusic/Green block.jpg"))
-blue = pygame.image.load(("Modelsandmusic/blue snake.jpg"))
-red = pygame.image.load(("Modelsandmusic/red.jpg"))
-purple = pygame.image.load(("Modelsandmusic/purple.jpg"))
+green = pygame.image.load(("Desktop\Github Void Key\Snake\modelsandmusic\Green block.jpg"))
+blue = pygame.image.load(("Desktop\Github Void Key\Snake\Modelsandmusic/blue snake.jpg"))
+red = pygame.image.load(("Desktop\Github Void Key\Snake\Modelsandmusic/red.jpg"))
+purple = pygame.image.load(("Desktop\Github Void Key\Snake\Modelsandmusic/purple.jpg"))
 colors = [green, blue, red, purple]
 
 #All attributes of the gold apple
 class Golden_Apple:
     def __init__(self, background):
-        self.golden_apple = pygame.image.load("modelsandmusic/golden apple.jpg").convert_alpha(background)
+        self.golden_apple = pygame.image.load("Desktop\Github Void Key\Snake\modelsandmusic/golden apple.jpg").convert_alpha(background)
         self.background = background
         self.golden_apple_x = dimensions * 30
         self.golden_apple_y = dimensions * 30
@@ -33,7 +33,7 @@ class Golden_Apple:
 #all apple attributes
 class Apple:
     def __init__(self, background):
-        self.apple = pygame.image.load("modelsandmusic/apple.jpg").convert()
+        self.apple = pygame.image.load("Desktop\Github Void Key\Snake\modelsandmusic/apple.jpg").convert()
         self.background = background
         self.apple_x = dimensions * 12
         self.apple_y = dimensions * 12
@@ -56,7 +56,7 @@ class Snake:
         self.block_y = [dimensions] * length
         self.block_x = [dimensions] * length
         self.direction = "down"
-        self.picture = pygame.image.load("Modelsandmusic/background.jpg")
+        self.picture = pygame.image.load("Desktop\Github Void Key\Snake\Modelsandmusic/background.jpg")
     def make_appear(self):
         self.background_screen.fill(background)
         #self.background_screen.blit(self.picture, (0,0))
@@ -148,7 +148,7 @@ class Game:
         score = font.render(f"Score: {self.snake.length + self.snake.score1}", True, (255, 255, 255))
         self.surface.blit(score, (screen_x/2 -25, 10))
     def music(self):
-        pygame.mixer.music.load("Modelsandmusic/music.mp3")
+        pygame.mixer.music.load("Desktop\Github Void Key\Snake\Modelsandmusic/music.mp3")
         pygame.mixer.music.play(-1)
 #color swap upon reaching certain scores
     def upgrade(self):
@@ -177,11 +177,11 @@ class Game:
         self.upgrade()
 
         #apple collision
-        sound = pygame.mixer.Sound("Modelsandmusic/Point.mp3")
+        sound = pygame.mixer.Sound("Desktop\Github Void Key\Snake\Modelsandmusic/Point.mp3")
         rando = random.randint(0,2)
         if self.collide(self.snake.block_x[0], self.snake.block_y[0], self.apple.apple_x, self.apple.apple_y):
             if 0 <= self.golden.golden_apple_x <= screen_x and 0 <= self.golden.golden_apple_y <= screen_y:
-                sound = pygame.mixer.Sound("Modelsandmusic/Point.mp3")
+                sound = pygame.mixer.Sound("Desktop\Github Void Key\Snake\Modelsandmusic/Point.mp3")
                 pygame.mixer.Sound.play(sound)
                 self.apple.apple_movement()
                 self.snake.apple_make_snake_tall()
@@ -194,7 +194,7 @@ class Game:
 
         #gold apple collision
         if self.collide(self.snake.block_x[0], self.snake.block_y[0], self.golden.golden_apple_x, self.golden.golden_apple_y):
-            sound = pygame.mixer.Sound("Modelsandmusic/Point.mp3")
+            sound = pygame.mixer.Sound("Desktop\Github Void Key\Snake\Modelsandmusic/Point.mp3")
             pygame.mixer.Sound.play(sound, 1)
             pygame.mixer.Sound.play(sound, 1)
             self.golden.golden_movement()
@@ -204,17 +204,17 @@ class Game:
         #colliding with yourself
         for b in range(1,self.snake.length):
             if self.collide(self.snake.block_x[0], self.snake.block_y[0], self.snake.block_x[b], self.snake.block_y[b]):
-                crash = pygame.mixer.Sound("Modelsandmusic/Crash.mp3")
+                crash = pygame.mixer.Sound("Desktop\Github Void Key\Snake\Modelsandmusic/Crash.mp3")
                 pygame.mixer.Sound.play(crash)
                 raise "Game over"
         #Too far to the left or right
         if self.snake.block_x[0] >= (screen_x) or self.snake.block_x[0] <= -1:
-            crash = pygame.mixer.Sound("Modelsandmusic/Crash.mp3")
+            crash = pygame.mixer.Sound("Desktop\Github Void Key\Snake\Modelsandmusic/Crash.mp3")
             pygame.mixer.Sound.play(crash)
             raise "Game over"
         #Too far up or down
         if self.snake.block_y[0] >= (screen_y) or self.snake.block_y[0] <= -1:
-            crash = pygame.mixer.Sound("Modelsandmusic/Crash.mp3")
+            crash = pygame.mixer.Sound("Desktop\Github Void Key\Snake\Modelsandmusic/Crash.mp3")
             pygame.mixer.Sound.play(crash)
             raise "Game over"
 
@@ -280,7 +280,7 @@ class Game:
             self.color8 = (255, 0, 0)
         self.color3 = 0, 0, 0
         self.surface.fill(background)
-        picture = pygame.image.load("Modelsandmusic/background.jpg")
+        picture = pygame.image.load("Desktop\Github Void Key\Snake\Modelsandmusic/background.jpg")
         master_y = screen_y - 150
         hard_y = screen_y - 200
         normal_y = screen_y - 250
@@ -298,7 +298,7 @@ class Game:
         self.surface.blit(line5, ((screen_x/2 - 50), hard_y))
         self.surface.blit(line4, ((screen_x/2 - 70), normal_y))
         self.surface.blit(line6, ((screen_x/2 - 65), master_y))
-        snakey = pygame.image.load("Modelsandmusic/snake icon-1.jpg")
+        snakey = pygame.image.load("Desktop\Github Void Key\Snake\Modelsandmusic/snake icon-1.jpg")
         self.surface.blit(snakey, (265, 90))
         pygame.draw.rect(self.surface, (self.color5), (285, 241, 100, 43), fill, 10)
         pygame.draw.rect(self.surface, (self.color6), (287, 340, 105, 43), fill, 10)
@@ -316,7 +316,7 @@ class Game:
         fill = 1
 
         self.color3 = 0, 0, 0
-        picture = pygame.image.load("Modelsandmusic/background.jpg")
+        picture = pygame.image.load("Desktop\Github Void Key\Snake\Modelsandmusic/background.jpg")
         master_y = screen_y - 150
         hard_y = screen_y - 200
         normal_y = screen_y - 250
@@ -338,7 +338,7 @@ class Game:
         fill = 1
 
         self.color3 = 0, 0, 0
-        picture = pygame.image.load("Modelsandmusic/background.jpg")
+        picture = pygame.image.load("Desktop\Github Void Key\Snake\Modelsandmusic/background.jpg")
         master_y = screen_y - 150
         hard_y = screen_y - 200
         normal_y = screen_y - 250
@@ -451,13 +451,13 @@ class Game:
                         self.snake.score1 = self.snake.score1 + 1
                         self.score()
                         pygame.display.flip()
-                        cheat = pygame.mixer.Sound("Modelsandmusic/bloop.mp3")
+                        cheat = pygame.mixer.Sound("Desktop\Github Void Key\Snake\Modelsandmusic/bloop.mp3")
                         pygame.mixer.Sound.play(cheat)
                     elif event.key == K_q:
                         self.snake.score1 = self.snake.score1 + 1
                         self.score()
                         pygame.display.flip()
-                        cheat = pygame.mixer.Sound("Modelsandmusic/bloop.mp3")
+                        cheat = pygame.mixer.Sound("Desktop\Github Void Key\Snake\Modelsandmusic/bloop.mp3")
                         pygame.mixer.Sound.play(cheat)
 
 
